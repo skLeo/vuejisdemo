@@ -7,9 +7,11 @@
       </div>
       <div class="order-list-option">
         开始日期
+        <v-date-picker :value="startDate"></v-date-picker>
       </div>
       <div class="order-list-option">
         结束日期
+        <v-date-picker :value="startDate"></v-date-picker>
       </div>
       <div class="order-list-option">
         关键词:
@@ -28,13 +30,17 @@
 
 <script>
 import VSelection from './../components/base/selection'
+import VDatePicker from 'vue-date-picker'
 export default {
   components:{
-    VSelection
+    VSelection,
+    VDatePicker
   },
   data () {
     return {
       query:'',
+      startDate:'',
+      endDate:'',
       productId:0,
       products:[{
         label:'数据统计',
@@ -49,6 +55,11 @@ export default {
         label:'广告发布',
         value:0
       }]
+    }
+  },
+  methods: {
+    productChange(obj){
+      this.productId = obj.value
     }
   }
 }
